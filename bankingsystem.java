@@ -260,7 +260,7 @@ public class BankingSystem {
 	        	System.out.print("Invalid Credentials!");
 	        	return;
 	        }
-
+	}
 	//added by jez
 	public static void checkBalance() {
 	System.out.println("Current balance: " + storedBalance);
