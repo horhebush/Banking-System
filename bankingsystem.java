@@ -1,248 +1,188 @@
-package Java;
+//Calvo, Jezlyn Mae               //Nofre, Jasmine
+//Fuertes, Jorge Omar		 //Salazar, Cheska Ann Lorein
+//Lim, Lorenzo Matthew		//Tuazon, Jamaine Grace
+
+package Final_Project;
 import java.util.Scanner;
-import java.awt.Toolkit;
-import java.util.ArrayList;
 public class BankingSystem {
 
-	private static String storedName;
-	private static String storedUser;
-	private static String storedPass;
-	private static int storedPin;
-	private static int storedBalance;
-	
-	// New additions - LIM
-   	private static Scanner scn = new Scanner(System.in); // Universal Scanner para di na gagawa ng new Scanner(System.in) sa ibang methods
-    	private static double balance = 0; // Balance for deposit and withdraw
-    	private static double[] balances = new double[100]; // Array para sa Transaction History
-	private static int transactionCount = 0; // Counts user transactions
+    private static String storedName;
+    private static String storedUser;
+    private static String storedPass;
+    private static int storedPin;
+    private static double balance = 0;
+    
+    private static double[] balances = new double[100]; 
+    private static int transactionCount = 0; 
+    
+    private static Scanner scn = new Scanner(System.in);
 
-	public static void main(String[] args) {
-		homePage();
-	}
-
-	// added by Salazar
-	private static void homePage() {
-		
-		int option = 0;
-
-		while (option != 3);
-		System.out.println("Welcome to the Banking System!"  );
-		System.out.println("1. Sign Up");
-		System.out.println("2. Log In");
-		System.out.println("3. Exit");
-		System.out.print("Choose an option: ");
-		option = scn.nextInt();
-		
-		switch (option) {
-		case 1:
-			System.out.println("Sign Up selected. ");
-			break;
-		case 2:
-			System.out.println("Log In selected. ");
-			break;
-		case 3:
-			System.out.println("Leaving the Banking System. Goodbye! ");
-			break;
-		default:
-			System.out.println("Invalid option. Please try again. ");
-			break;
-		
-		}
-	}
-	private static void signUp() {
-	        
-	        System.out.println("\n \tCreate an Account!\n");
-	        System.out.print("\tEnter Account Name: ");
-	        storedName = scn.nextLine();
-
-	        System.out.print("\tEnter PIN: ");
-	        storedPin = UserInput(scn);
-	        scn.nextLine(); 
-
-	        System.out.print("\tEnter Username: ");
-	        storedUser = scn.nextLine();
-
-	        System.out.print("\tEnter Password: ");
-	        storedPass = scn.nextLine();
-	    }
-
-		private static void LogIn() {  //added by Tuazon
-		System.out.println("\nFederal Reserve Bank of COMP23P");
-		System.out.print("Enter Your Username: ");
-		String username = scn.nextLine();
-		System.out.print("Enter Your Password: ");
-		String pass = scn.nextLine();
-			
-		boolean validation1 = username.equals(storedUser);
-		boolean validation2 = pass.equals(storedPass);
-			
-		if(validation1 == true && validation2 == true) {
-			Menu(); // 
-		} else {
-			System.out.println("Invalid Input! Please Sign-up first or try again!");
-			homePage();
-		}
-		scn.close();
-			
-		}
-	private static void Menu() { //Added by Nofre
-        {
-       	System.out.println("\n\tHello, " + storedName);
-       	System.out.println(" ");
-       	System.out.println("\tWelcome to Federal Reserve Bank of COM23P!");
-       	System.out.println(" ");
-       	System.out.println("\tBank Account Menu:");
-           System.out.println("\t[A] Money Transaction");
-           System.out.println("\t[B] Balance");
-           System.out.println("\t[C] Account Details");
-           System.out.println("\t[D] Log Out");
-           System.out.print("\tEnter your choice: ");
-           }
-	}
-	    	private static int UserInput(Scanner scn) {
-			 int input = 0;
-			 while (true) {
-
-		            if (scn.hasNextInt()) {
-		                input= scn.nextInt();
-		                break; 
-		            } else {
-		                System.out.print("\tInvalid PIN. Please enter a numeric value: ");
-		                scn.next(); 
-		            }
-		        }
-			return input;
-	    	}
-		
-	private static boolean PinValidation(Scanner pin)
-	{	
-		for (int x = 0; x < 3; x++) {
-		  System.out.print("\nAccount Pin: ");
-		  String enteredPin = pin.nextLine();
-
-		    if (enteredPin.equals(storedPin)) 
-		 {
-			  return true;
-		   } 
-		     else 
-		        {
-		            System.out.println("\n\tWrong Passcode. Please try again.\n");
-		        }
-		    }
-			Toolkit.getDefaultToolkit().beep();
-		    System.out.println("You have been logged out!");
-		    homePage();
-		    return false;
-		}
-
-		private static void MethodX() 
-		{
-			System.out.println("\n\tThank you for using Federal Reserve Bank of COM23P");
-			System.out.println("\t\t    Have a good one. Good bye!");
-		}
-		
-		private static char Default() 
-		{
-			char x;
-
-			
-			System.out.print("Select Option: ");
-			x = scn.next().charAt(0);
-			
-			do 
-			{
-				if (x != 'A' && x != 'B' && x != 'C' && x != 'X') 
-				{
-					System.out.println("\nInvalid Input\n");
-					System.out.print("Select Option: ");
-					x = scn.next().charAt(0);
-				}
-			} 
-			
-			while (x != 'A' && x != 'B' && x != 'C' && x != 'X');
-			
-			return x;
-
-	}
-	
-	
-	// New Additions - LIM
-	private static void deposit() {
-   	 double depAmount;
-   	 String accName;
-   	 int accPin;
-
-    	System.out.print("Enter Account Name: ");
-    	accName = scn.nextLine();
-
-    	if (PinValidation(scn)) { // Call PIN validation method
-    	    System.out.print("\n\tEnter amount to deposit: ");
-   	     depAmount = scn.nextDouble();
-
-   	     // Calculations & Storing
-    	    balance += depAmount;
-    	    balances[transactionCount++] = depAmount; // Stores the transaction in the Array
-
-    	    System.out.println("\tNew Balance: " + balance);
-   	 } else {
-   	     System.out.println("Invalid Credentials!");
-    	}
-	}
-
-	// New Additions - LIM    
-	private static void withdraw() {
-   	 double withAmount;
-    	 String accName;
-
-    	 System.out.print("Enter Account Name: ");
-    	 accName = scn.nextLine();
-
-    	 if (PinValidation(scn)) { // Call PIN validation method
-       	 	 System.out.print("\tEnter amount to withdraw: ");
-         	 withAmount = scn.nextDouble();
-
-        	 // Conditional
-        	 if (balance < withAmount) {
-            	 System.out.println("\tInsufficient Funds");
-            	 return;
-        	 } else {
-            	 // Calculations & Storing
-            	 balance -= withAmount;
-            	 balances[transactionCount++] = -withAmount; // Stores the transaction in the Array
-
-            	 System.out.println("\tNew Balance: " + balance);
-        	}
-    	 } else {
-         System.out.println("Invalid Credentials!");
+    public static void main(String[] args) {
+        homePage();
     }
-}
 
-	
-	// New Additions - LIM    
-public static void displayAccountTransaction() {
-    String accName;
+    private static void homePage() {
+        char option;
 
-    System.out.print("Enter Account Name: ");
-    accName = scn.nextLine();
+        do {
+            System.out.println("\n\t\tWelcome to Federal Reserve Bank of COM23P!");
+            System.out.println("\n\t\t[A] Sign Up");
+            System.out.println("\t\t[B] Log In");
+            System.out.println("\t\t[X] Exit");
+            System.out.print("\t\tChoose an option: ");
+            option = scn.next().charAt(0);
+            scn.nextLine();
 
-    if (PinValidation(scn)) { // Call PIN validation method
-        System.out.println("Transaction History");
-
-        // Loop to iterate
-        for (int i = 0; i < transactionCount; i++) {
-            if (balances[i] > 0) {
-                System.out.println("Deposited: " + balances[i]);
-            } else {
-                System.out.println("Withdrawn: " + (-balances[i]));
+            switch (option) {
+                case 'A', 'a':
+                    System.out.println("\n\tSign Up selected. ");
+                    signUp();
+                    break;
+                case 'B', 'b':
+                    System.out.println("\n\tLog In selected. ");
+                    LogIn();
+                    break;
+                case 'X', 'x':
+                    System.out.println("\n\t\tLeaving the Banking System. Goodbye! ");
+                    return;
+                default:
+                    System.out.println("\n\t\tInvalid option. Please try again. ");
+                    break;
             }
-        }
-    } else {
-        System.out.println("Invalid Credentials!");
+        } while (option != 'X');
     }
-}
 
-	//added by jez
-	public static void checkBalance() {
+    private static void signUp() {
+        System.out.println("\tCreate an Account!\n");
+        System.out.print("\tEnter Account Name: ");
+        storedName = scn.nextLine();
+
+        System.out.print("\tEnter PIN: ");
+        storedPin = scn.nextInt();
+        scn.nextLine();
+
+        System.out.print("\tEnter Username: ");
+        storedUser = scn.nextLine();
+
+        System.out.print("\tEnter Password: ");
+        storedPass = scn.nextLine();
+    }
+
+    private static void LogIn() {
+        System.out.println("\tYou may now log in your account.\n");
+        System.out.print("\n\tEnter Your Username: ");
+        String username = scn.nextLine();
+        System.out.print("\tEnter Your Password: ");
+        String pass = scn.nextLine();
+
+        boolean validation1 = username.equals(storedUser);
+        boolean validation2 = pass.equals(storedPass);
+
+        if (validation1 && validation2) {
+            menu();
+        } else {
+            System.out.println("\tInvalid Input! Please Sign-up first or try again!");
+            homePage();
+        }
+    }
+
+    private static void menu() {
+        char choice, choiceC;
+
+        do {
+            System.out.println("\n\tHello, " + storedName);
+            System.out.println("\tWelcome to Federal Reserve Bank of COM23P!");
+            System.out.println("\n\tBank Account Menu:");
+            System.out.println("\t[A] Transaction Menu");
+            System.out.println("\t[B] Balance");
+            System.out.println("\t[C] Account Details");
+            System.out.println("\t[D} Account Transaction");
+            System.out.println("\t[X] Log Out");
+            System.out.print("\tEnter your choice: ");
+            choice = scn.next().charAt(0);
+            scn.nextLine();
+
+            switch (choice) {
+                case 'A', 'a':
+                	System.out.println("\n\tTransaction Menu:");
+                	System.out.println("\t[A] Deposit");
+                	System.out.println("\t[B] Withdraw");
+                	System.out.println("\t[X] Exit");
+                	System.out.print("\tEnter your choice: ");
+                	choiceC = scn.next().charAt(0);
+                    scn.nextLine();
+                	
+                    switch (choiceC) {
+                		case 'A' , 'a':
+                			deposit();
+                			break;
+                		case 'B' , 'b':
+                			withdraw();
+                			break;
+                		case 'X' , 'x':
+                			break;
+                		default:
+                			System.out.println("\n\tInvalid choice. Please try again.");
+                            break;
+                	}
+                    break;
+                case 'B', 'b':
+                    checkBalance();
+                    break;
+                case 'C', 'c':
+                    displayAccountDetails();
+                    break;
+                case 'D', 'd':
+                	displayAccountTransaction();
+                	break;
+                case 'X', 'x':
+                    System.out.println("\n\tYou have successfully logged out!");
+                    return;
+                default:
+                    System.out.println("\n\tInvalid choice. Please try again.");
+                    break;
+            }
+        } while (choice != 'F');
+    }
+
+    private static void deposit() {
+        double depAmount;
+
+        if (PinValidation()) {
+            System.out.print("\n\tEnter amount to deposit: ");
+            depAmount = scn.nextDouble();
+
+            balance += depAmount;
+            balances[transactionCount++] = depAmount;
+            
+            System.out.println("\tNew Balance: " + balance);
+        } else {
+            System.out.println("Invalid Credentials!");
+        }
+    }
+
+    private static void withdraw() {
+        double withAmount;
+
+        if (PinValidation()) {
+            System.out.print("\n\tEnter amount to withdraw: ");
+            withAmount = scn.nextDouble();
+
+            if (balance < withAmount) {
+                System.out.println("\tInsufficient Funds");
+                return;
+            } else {
+                balance -= withAmount;
+                balances[transactionCount++] = -withAmount;
+
+                System.out.println("\tNew Balance: " + balance);
+            }
+        } else {
+            System.out.println("Invalid Credentials!");
+        }
+    }
+
+    public static void checkBalance() {
         System.out.println("\n\tCurrent balance: " + balance);
     }
 
@@ -256,15 +196,10 @@ public static void displayAccountTransaction() {
     }
     
     public static void displayAccountTransaction() {
-        String accName;
-
-        System.out.print("\n\tEnter Account Name: ");
-        accName = scn.nextLine();
-
-        if (PinValidation()) { // Call PIN validation method
+        
+        if (PinValidation()) { 
             System.out.println("\n\tTransaction History");
 
-            // Loop to iterate
             for (int i = 0; i < transactionCount; i++) {
                 if (balances[i] > 0) {
                     System.out.println("\tDeposited: " + balances[i]);
@@ -276,3 +211,22 @@ public static void displayAccountTransaction() {
             System.out.println("Invalid Credentials!");
         }
     }
+
+    private static boolean PinValidation() {
+        for (int x = 0; x < 3; x++) {
+            System.out.print("\tAccount Pin: ");
+            int enteredPin = scn.nextInt();
+
+            if (enteredPin == storedPin) {
+                return true;
+            } else {
+                System.out.println("\n\tWrong Passcode. Please try again.\n");
+            }
+        }
+        System.out.println("You have been logged out!");
+        homePage();
+        return false;
+    }
+	
+}
+
