@@ -243,7 +243,7 @@ public static void displayAccountTransaction() {
 
 	//added by jez
 	public static void checkBalance() {
-	System.out.println("Current balance: " + storedBalance);
+	System.out.println("Current balance: " + balance);
 	}
 	
 	public static void displayAccountDetails() {
@@ -261,9 +261,8 @@ public static void displayAccountTransaction() {
 		System.out.println("1. Deposit");
 		System.out.println("2. Withdraw");
 		System.out.println("3. Check Balance");
-		System.out.println("4. Account Details");
-		System.out.println("5. Account Transaction");
-		System.out.println("6. Log Out");
+		System.out.println("4. Account Transaction");
+		System.out.println("5. Log Out");
 		System.out.println("Enter your Choice: ");
 		choice = scn.nextInt();
 
@@ -278,12 +277,9 @@ public static void displayAccountTransaction() {
 		checkBalance();
 		break;
 	case 4:
-		displayAccountDetails();
-		break;
-	case 5:
 		displayAccountTransaction();
 		break;
-	case 6:
+	case 5:
 		System.out.println("Exiting Program...");
 		System.exit(0);
 		break;
