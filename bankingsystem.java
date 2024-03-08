@@ -78,7 +78,7 @@ public class BankingSystem {
 			
 		if(validation1 == true && validation2 == true) {
 			Menu(); // 
-		else {
+		} else {
 			System.out.println("Invalid Input! Please Sign-up first or try again!");
 			homePage();
 		}
