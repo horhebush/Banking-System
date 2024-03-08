@@ -33,4 +33,33 @@ public class BankingSystem {
 	    Open();
 	    return false;
 	}
+
+	private static void MethodX() 
+	{
+		System.out.println("\n\tThank you for using Federal Reserve Bank of COM23P");
+		System.out.println("\t\t    Have a good one. Good bye!");
+	}
+	
+	private static char Default() 
+	{
+		char x;
+
+		Scanner select = new Scanner(System.in);
+		System.out.print("Select Option: ");
+		x = select.next().charAt(0);
+		
+		do 
+		{
+			if (x != 'A' && x != 'B' && x != 'C' && x != 'X') 
+			{
+				System.out.println("\nInvalid Input\n");
+				System.out.print("Select Option: ");
+				x = select.next().charAt(0);
+			}
+		} 
+		
+		while (x != 'A' && x != 'B' && x != 'C' && x != 'X');
+		
+		return x;
+	}
 }
