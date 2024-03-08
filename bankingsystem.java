@@ -20,7 +20,7 @@ public class BankingSystem {
 
 	}
 
-	private static void LogIn() {  //added by Jamaine 
+		private static void LogIn() {  //added by Tuazon
 		System.out.println("\nFederal Reserve Bank of COMP23P");
 		System.out.print("Enter Your Username: ");
 		String username = scn.nextLine();
