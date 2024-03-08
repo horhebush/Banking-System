@@ -17,7 +17,7 @@ public class BankingSystem {
 	private static int transactionCount = 0; // Counts user transactions
 
 	public static void main(String[] args) {
-
+		homePage();
 	}
 
 	// added by Salazar
@@ -131,7 +131,7 @@ public class BankingSystem {
 		    }
 
 		    System.out.println("You have been logged out!");
-		    Open();
+		    homePage();
 		    return false;
 		}
 
