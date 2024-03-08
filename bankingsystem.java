@@ -167,70 +167,55 @@ public class BankingSystem {
 	
 	
 	// New Additions - LIM
-	private static void deposit() { // New method for Deposit
-	    double depAmount;
-	    String accName;
-	    int accPin;
-	    	
-	    System.out.print("Enter Account Name: ");
-	    accName = scn.nextLine();
-	    	
-	    System.out.print("Enter Pin: ");
-	    accPin = scn.nextInt();
-	    	
-	    scn.nextLine();
-	    	
-	    if (accName.equals(storedName) && accPin == storedPin) {
-	        System.out.print("\n\tEnter amount to deposit: ");
-	         depAmount = scn.nextDouble();
+	private static void deposit() {
+   	 double depAmount;
+   	 String accName;
+   	 int accPin;
 
-	         // Calculations & Storing
-	        balance += depAmount;
-	        balances[transactionCount++] = depAmount; // Stores the transaction in the Array
+    	System.out.print("Enter Account Name: ");
+    	accName = scn.nextLine();
 
-	        System.out.println("\tNew Balance: " + balance);
-	    } else {
-	    	System.out.print("Invalid Credentials!");
-	    	return;
-	    }
+    	if (PinValidation(scn)) { // Call PIN validation method
+    	    System.out.print("\n\tEnter amount to deposit: ");
+   	     depAmount = scn.nextDouble();
+
+   	     // Calculations & Storing
+    	    balance += depAmount;
+    	    balances[transactionCount++] = depAmount; // Stores the transaction in the Array
+
+    	    System.out.println("\tNew Balance: " + balance);
+   	 } else {
+   	     System.out.println("Invalid Credentials!");
+    	}
 	}
-
 
 	// New Additions - LIM    
-	private static void withdraw() { // New Method for Withdraw
-	    double withAmount;
-			
-	    String accName;
-	    int accPin;
-	    	
-	    System.out.print("Enter Account Name: ");
-	    accName = scn.nextLine();
-	    	
-	    System.out.print("Enter Pin: ");
-	    accPin = scn.nextInt();
-	    	
-	    scn.nextLine();
-	    	
-	    if (accName.equals(storedName) && accPin == storedPin) {
-	    	System.out.print("\tEnter amount to withdraw: ");
-	    	withAmount = scn.nextDouble();
-	    		
-	    	//Conditional
-	    	if (balance < withAmount) {
-	    		System.out.println("\tInssuficient Funds");
-	    		return;
-	    	} else {
-	    		// Calculations & Storing
-	    		balance -= withAmount;
-	    		balances[transactionCount ++] = withAmount; // Stores the transaction in the Array
-	    			
-	    		System.out.println("\tNew Balance: " + balance);
-	    	}
-	    } else {
-	    	System.out.print("Invalid Credentials!");
-	    	return;
-	    }
-	}
+	private static void withdraw() {
+   	 double withAmount;
+    	 String accName;
+
+    	 System.out.print("Enter Account Name: ");
+    	 accName = scn.nextLine();
+
+    	 if (PinValidation(scn)) { // Call PIN validation method
+       	 	 System.out.print("\tEnter amount to withdraw: ");
+         	 withAmount = scn.nextDouble();
+
+        	 // Conditional
+        	 if (balance < withAmount) {
+            	 System.out.println("\tInsufficient Funds");
+            	 return;
+        	 } else {
+            	 // Calculations & Storing
+            	 balance -= withAmount;
+            	 balances[transactionCount++] = -withAmount; // Stores the transaction in the Array
+
+            	 System.out.println("\tNew Balance: " + balance);
+        	}
+    	 } else {
+         System.out.println("Invalid Credentials!");
+    }
+}
 
 	
 	// New Additions - LIM    
