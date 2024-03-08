@@ -49,7 +49,22 @@ public class BankingSystem {
 		
 		}
 	}
+	private static void signUp() {
+	        
+	        System.out.println("\n \tCreate an Account!\n");
+	        System.out.print("\tEnter Account Name: ");
+	        storedName = scn.nextLine();
 
+	        System.out.print("\tEnter PIN: ");
+	        storedPin = UserInput(scn);
+	        scn.nextLine(); 
+
+	        System.out.print("\tEnter Username: ");
+	        storedUser = scn.nextLine();
+
+	        System.out.print("\tEnter Password: ");
+	        storedPass = scn.nextLine();
+	    }
 
 		private static void LogIn() {  //added by Tuazon
 		System.out.println("\nFederal Reserve Bank of COMP23P");
@@ -84,24 +99,6 @@ public class BankingSystem {
            System.out.print("\tEnter your choice: ");
            }
 	}
-	
-	 private static void signUp() {
-	        
-	        System.out.println("\n \tCreate an Account!\n");
-	        System.out.print("\tEnter Account Name: ");
-	        storedName = scn.nextLine();
-
-	        System.out.print("\tEnter PIN: ");
-	        storedPin = UserInput(scn);
-	        scn.nextLine(); 
-
-	        System.out.print("\tEnter Username: ");
-	        storedUser = scn.nextLine();
-
-	        System.out.print("\tEnter Password: ");
-	        storedPass = scn.nextLine();
-	    }
-
 	    	private static int UserInput(Scanner scn) {
 			 int input = 0;
 			 while (true) {
