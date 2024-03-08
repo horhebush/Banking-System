@@ -168,5 +168,101 @@ public static void main(String[] args) {
 			return x;
 
 	}
+	
+	
+	// New Additions - LIM
+	private static void deposit() { // New method for Deposit
+	    double depAmount;
+	    String accName;
+	    int accPin;
+	    	
+	    System.out.print("Enter Account Name: ");
+	    accName = scn.nextLine();
+	    	
+	    System.out.print("Enter Pin: ");
+	    accPin = scn.nextInt();
+	    	
+	    scn.nextLine();
+	    	
+	    if (accName.equals(storedName) && accPin == storedPin) {
+	        System.out.print("\n\tEnter amount to deposit: ");
+	         depAmount = scn.nextDouble();
 
+	         // Calculations & Storing
+	        balance += depAmount;
+	        balances[transactionCount++] = depAmount; // Stores the transaction in the Array
+
+	        System.out.println("\tNew Balance: " + balance);
+	    } else {
+	    	System.out.print("Invalid Credentials!");
+	    	return;
+	    }
+	}
+
+
+	// New Additions - LIM    
+	private static void withdraw() { // New Method for Withdraw
+	    double withAmount;
+			
+	    String accName;
+	    int accPin;
+	    	
+	    System.out.print("Enter Account Name: ");
+	    accName = scn.nextLine();
+	    	
+	    System.out.print("Enter Pin: ");
+	    accPin = scn.nextInt();
+	    	
+	    scn.nextLine();
+	    	
+	    if (accName.equals(storedName) && accPin == storedPin) {
+	    	System.out.print("\tEnter amount to withdraw: ");
+	    	withAmount = scn.nextDouble();
+	    		
+	    	//Conditional
+	    	if (balance < withAmount) {
+	    		System.out.println("\tInssuficient Funds");
+	    		return;
+	    	} else {
+	    		// Calculations & Storing
+	    		balance -= withAmount;
+	    		balances[transactionCount ++] = withAmount; // Stores the transaction in the Array
+	    			
+	    		System.out.println("\tNew Balance: " + balance);
+	    	}
+	    } else {
+	    	System.out.print("Invalid Credentials!");
+	    	return;
+	    }
+	}
+
+	
+	// New Additions - LIM    
+	public static void displayAccountTransaction() { // Method to display transaction history
+	        String accName;
+	        int accPin;
+	        	
+	        System.out.print("Enter Account Name: ");
+	        accName = scn.nextLine();
+	        	
+	        System.out.print("Enter Pin: ");
+	        accPin = scn.nextInt();
+	        	
+	        scn.nextLine();
+	        if (accName.equals(storedName) && accPin == storedPin) {
+	        	System.out.println("Transaction History");
+	        		
+	        	// Loop to iterate
+	        	for (int i = 0 ; i < transactionCount ; i ++) {
+	        		if (balances[i] > 0) {
+	        			System.out.println("Deposited: " + balances[i]);
+	        		} else {
+	        			System.out.println("Whitdrawed: " + (-balances[i]));
+	        		}
+	        	}
+	        } else {
+	        	System.out.print("Invalid Credentials!");
+	        	return;
+	        }
+	 }
 }
