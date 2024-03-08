@@ -8,7 +8,7 @@ public class BankAccountMenu {
         boolean loggedIn = true;
 
         while (loggedIn) {
-        	System.out.println("\n\tHello, ");
+        	System.out.println("\n\tHello, \n");
         	System.out.println(" ");
         	System.out.println("\tWelcome to Federal Reserve Bank of COM23P!");
         	System.out.println(" ");
@@ -23,7 +23,7 @@ public class BankAccountMenu {
 
             switch (choice) {
                 case 'A':
-                    System.out.println("\n\tMoney Transaction Menu:");
+                    System.out.println("\n\tMoney Transaction Menu: \n");
                     System.out.println("\t[A] Deposit");
                     System.out.println("\t[B] Withdraw");
                     System.out.print("\tEnter your choice: ");
