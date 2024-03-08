@@ -47,7 +47,7 @@ public class BankAccount {
 	
     	}
 		public void displayAccountInformation() {
-        System.out.println("\n\tAccount Information:");
+        System.out.println("\n\tAccount Information:\n");
         System.out.println("\tAccount Name: " + storedName);
         System.out.println("\tPIN: " + storedPin);
         System.out.println("\tUsername: " + storedUsername);
