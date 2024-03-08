@@ -243,54 +243,36 @@ public static void displayAccountTransaction() {
 
 	//added by jez
 	public static void checkBalance() {
-	System.out.println("Current balance: " + balance);
-	}
-	
-	public static void displayAccountDetails() {
-		System.out.println("\n\tAccount Details:\n");
-		System.out.println("\tAccount Name: " + storedName);
-		System.out.println("\tPIN: " + storedPin);
-		System.out.println("\tUsername: " + storedUser);
-		System.out.println("\tPassword: " + storedPass);
-		System.out.println(" ");
-	}
-	private static void menu() { 
-			char choice;
-		
-	        do {
-	       	System.out.println("\n\tHello, " + storedName);
-	       	System.out.println(" ");
-	       	System.out.println("\tWelcome to Federal Reserve Bank of COM23P!");
-	       	System.out.println(" ");
-	       	System.out.println("\tBank Account Menu:");
-	        System.out.println("\t[A] Deposit");
-	        System.out.println("\t[B] Withdraw");
-	        System.out.println("\t[C] Balance");
-	        System.out.println("\t[D] Account Details");
-	        System.out.println("\t[E] Log Out");
-	        System.out.print("\tEnter your choice: ");
-	        choice = scn.next().charAt(0);
-	        scn.nextLine();
-	        	
-	        	switch(choice) {
-	        	case 'A':
-	        		deposit();
-	        		break;
-	        	case 'B':
-	        		withdraw();
-	        		break;
-	        	case 'C':
-	        		checkBalance();
-                    	        break;
-	        	case 'D':
-	        		displayAccountDetails();
-	        		break;
-	        	case 'E':
-	        		System.out.println("\tYou have successfully logged out!");
-	                    	return;
-	        	default:
-	                    System.out.println("Invalid choice. Please try again.");
-	                    break;
-	        	}
-	 }    	while (choice != 'E');
-	        }
+        System.out.println("\n\tCurrent balance: " + balance);
+    }
+
+    public static void displayAccountDetails() {
+        System.out.println("\n\tAccount Details:");
+        System.out.println("\tAccount Name: " + storedName);
+        System.out.println("\tPIN: " + storedPin);
+        System.out.println("\tUsername: " + storedUser);
+        System.out.println("\tPassword: " + storedPass);
+        System.out.println(" ");
+    }
+    
+    public static void displayAccountTransaction() {
+        String accName;
+
+        System.out.print("\n\tEnter Account Name: ");
+        accName = scn.nextLine();
+
+        if (PinValidation()) { // Call PIN validation method
+            System.out.println("\n\tTransaction History");
+
+            // Loop to iterate
+            for (int i = 0; i < transactionCount; i++) {
+                if (balances[i] > 0) {
+                    System.out.println("\tDeposited: " + balances[i]);
+                } else {
+                    System.out.println("\tWithdrawn: " + (-balances[i]));
+                }
+            }
+        } else {
+            System.out.println("Invalid Credentials!");
+        }
+    }
