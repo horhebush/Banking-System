@@ -254,7 +254,26 @@ public static void displayAccountTransaction() {
 		System.out.println("\tPassword: " + storedPass);
 		System.out.println(" ");
 	}
-	
+	public static void main(String [] args){
+		char choiceC;
+	do {
+		int choice;
+		System.out.println("1. Deposit");
+		System.out.println("2. Withdraw");
+		System.out.println("3. Check Balance");
+		System.out.println("4. Account Details");
+		System.out.println("5. Account Transaction");
+		System.out.println("6. Log Out");
+		System.out.println("Enter your Choice: ");
+		choice = scn.nextInt();
+
+	switch (choice){
+	case 1:
+		deposit();
+		break;
+	case 2:
+		withdraw();
+		break;
 	case 3:
 		checkBalance();
 		break;
@@ -262,13 +281,21 @@ public static void displayAccountTransaction() {
 		displayAccountDetails();
 		break;
 	case 5:
+		displayAccountTransaction();
+		break;
+	case 6:
 		System.out.println("Exiting Program...");
 		System.exit(0);
 		break;
 	default:
 		System.out.println("Invalid Choice... ");
-
 }
-	 }
+	 System.out.print("Do you want to make another transaction? [y/n]: ");
+		choiceC = scn.next()charAt(0);
+
+		if choiceC == 'n' && choiceC == 'N')
+		break;
+	} while (true)
+}		
 
 }
