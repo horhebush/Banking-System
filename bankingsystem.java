@@ -20,8 +20,8 @@ public class BankingSystem {
 
 	}
 
-// added by Salazar
-private static void homePage() {
+	// added by Salazar
+	private static void homePage() {
 		
 		int option = 0;
 
@@ -62,11 +62,10 @@ private static void homePage() {
 		boolean validation2 = pass.equals(storedPass);
 			
 		if(validation1 == true && validation2 == true) {
-			Menu(); // temporary variable lang ito, palitan na lang pag nagawa na yung method ng MENU
-		}
+			Menu(); // 
 		else {
 			System.out.println("Invalid Input! Please Sign-up first or try again!");
-			Home_page(); // temporary variable lang ito, palitan na lang pag nagawa na yung method ng HOME PAGE
+			homePage();
 		}
 		scn.close();
 			
