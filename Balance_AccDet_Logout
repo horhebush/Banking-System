@@ -114,8 +114,8 @@ public class BankAccount {
                      break;
 
                 case 'D':
-                     System.out.println("\tYou have successfully logged out.");
-                     return; // Exit the Menu method
+                     System.out.println("\tYou have successfully logged out!");
+                     return; 
 
                 default:
                      System.out.println("\tInvalid choice. Please enter A, B, C, or D: ");
@@ -131,6 +131,7 @@ public class BankAccount {
         System.out.println("\tPassword: " + storedPassword);
         System.out.println(" ");
         System.out.println("\tYou have successfully created an account!");
+    
     }
     
     public static void main(String[] args) {
@@ -139,7 +140,7 @@ public class BankAccount {
         BankAccount userAccount = null;
 
         while (option != 3) {
-            System.out.println("\tWelcome to Federal Reserve bank of COM23P!");
+            System.out.println("\n\tWelcome to Federal Reserve bank of COM23P!");
             System.out.println("\n1. Sign Up");
             System.out.println("2. Log In");
             System.out.println("3. Exit");
@@ -172,5 +173,4 @@ public class BankAccount {
         }
     }
 }
-
 
