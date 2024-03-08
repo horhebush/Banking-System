@@ -260,5 +260,35 @@ public class BankingSystem {
 	        	System.out.print("Invalid Credentials!");
 	        	return;
 	        }
+
+	//added by jez
+	public static void checkBalance() {
+	System.out.println("Current balance: " + storedBalance);
+	}
+	
+	public static void displayAccountDetails() {
+		System.out.println("\n\tAccount Details:\n");
+		System.out.println("\tAccount Name: " + storedName);
+		System.out.println("\tPIN: " + storedPin);
+		System.out.println("\tUsername: " + storedUser);
+		System.out.println("\tPassword: " + storedPass);
+		System.out.println(" ");
+	}
+	//waiting sa ibang case ni lim for deposit and withdraw
+	case 3:
+		checkBalance();
+		break;
+	case 4:
+		displayAccountDetails();
+		break;
+	case 5:
+		System.out.println("Exiting Program...");
+		System.exit(0);
+		break;
+	default:
+		System.out.println("Invalid Choice... ");
+
+}
 	 }
+
 }
