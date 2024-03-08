@@ -4,18 +4,23 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 public class BankingSystem {
 
-private static String storedName;
+	private static String storedName;
 	private static String storedUser;
 	private static String storedPass;
 	private static int storedPin;
 	private static int storedBalance;
+	
+	// New additions - LIM
+   	private static Scanner scn = new Scanner(System.in); // Universal Scanner para di na gagawa ng new Scanner(System.in) sa ibang methods
+    	private static double balance = 0; // Balance for deposit and withdraw
+    	private static double[] balances = new double[100]; // Array para sa Transaction History
+	private static int transactionCount = 0; // Counts user transactions
 
 	public static void main(String[] args) {
 
 	}
 
 	private static void LogIn() {
-		Scanner scn = new Scanner(System.in);
 		System.out.println("\nFederal Reserve Bank of COMP23P");
 			
 		System.out.print("Enter Your Username: ");
