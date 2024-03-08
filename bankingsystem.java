@@ -71,6 +71,52 @@ public static void main(String[] args) {
 		scn.close();
 			
 		}
+	private static void Menu() { //Added by Jas
+        {
+       	System.out.println("\n\tHello, " + storedName);
+       	System.out.println(" ");
+       	System.out.println("\tWelcome to Federal Reserve Bank of COM23P!");
+       	System.out.println(" ");
+       	System.out.println("\tBank Account Menu:");
+           System.out.println("\t[A] Money Transaction");
+           System.out.println("\t[B] Balance");
+           System.out.println("\t[C] Account Details");
+           System.out.println("\t[D] Log Out");
+           System.out.print("\tEnter your choice: ");
+           }
+	}
+	
+	 private static void signUp() {
+	        
+	        System.out.println("\n \tCreate an Account!\n");
+	        System.out.print("\tEnter Account Name: ");
+	        storedName = scn.nextLine();
+
+	        System.out.print("\tEnter PIN: ");
+	        storedPin = UserInput(scn);
+	        scn.nextLine(); 
+
+	        System.out.print("\tEnter Username: ");
+	        storedUser = scn.nextLine();
+
+	        System.out.print("\tEnter Password: ");
+	        storedPass = scn.nextLine();
+	    }
+
+	    	private static int UserInput(Scanner scn) {
+			 int input = 0;
+			 while (true) {
+
+		            if (scn.hasNextInt()) {
+		                input= scn.nextInt();
+		                break; 
+		            } else {
+		                System.out.print("\tInvalid PIN. Please enter a numeric value: ");
+		                scn.next(); 
+		            }
+		        }
+			return input;
+	    	}
 		
 	private static boolean PinValidation(Scanner pin)
 	{	
