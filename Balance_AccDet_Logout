@@ -1,1 +1,186 @@
+package Final_Project;
+import java.util.Scanner;
+public class accDet {
+	
+	private static Scanner scn = new Scanner(System.in);
+    private static double[] balances = new double[100];
+    private static int transactionCount = 0;
+    private static double balance = 0;
+
+    private static String storedName;
+    private static int storedPin;
+    private static String storedUsername;
+    private static String storedPassword;
+
+    public static void signUp() {
+        System.out.println("\n\tCreate an Account!\n");
+        System.out.print("\tEnter Account Name: ");
+        storedName = scn.nextLine();
+
+        System.out.print("\tEnter PIN: ");
+        storedPin = UserInput(scn);
+        scn.nextLine();
+
+        System.out.print("\tEnter Username: ");
+        storedUsername = scn.nextLine();
+
+        System.out.print("\tEnter Password: ");
+        storedPassword = scn.nextLine();
+    }
+
+    private static int UserInput(Scanner scanner) {
+        int input = 0;
+
+        while (true) {
+            if (scanner.hasNextInt()) {
+                input = scanner.nextInt();
+                scanner.nextLine();
+                break;
+            } else {
+                System.out.print("\tInvalid PIN. Please enter a numeric value: ");
+                scanner.next();
+            }
+        }
+        return input;
+    }
+
+    public static void deposit() {
+        if (storedName == null) {
+            System.out.println("Please sign up first.");
+            signUp();
+        }
+
+        double depAmount;
+
+        System.out.print("Enter amount to deposit: ");
+        depAmount = scn.nextDouble();
+
+        // Calculations & Storing
+        balance += depAmount;
+        balances[transactionCount++] = depAmount;
+
+        System.out.println("New Balance: " + balance);
+    }
+
+    public static void withdraw() {
+        if (storedName == null) {
+            System.out.println("Please sign up first.");
+            signUp();
+        }
+
+        double withAmount;
+
+        System.out.print("Enter amount to withdraw: ");
+        withAmount = scn.nextDouble();
+
+        // Conditional
+        if (balance < withAmount) {
+            System.out.println("Insufficient Funds");
+            return;
+        } else {
+            // Calculations & Storing
+            balance -= withAmount;
+            balances[transactionCount++] = withAmount;
+
+            System.out.println("New Balance: " + balance);
+        }
+    }
+
+    public static void checkBalance() {
+        if (storedName == null) {
+            System.out.println("Please sign up first.");
+            signUp();
+        }
+
+        System.out.println("Current balance: " + balance);
+    }
+
+    public static void transactionHistory() {
+        if (storedName == null) {
+            System.out.println("Please sign up first.");
+            signUp();
+        }
+
+        System.out.println("Transaction History");
+
+        // Loop to iterate
+        for (int i = 0; i < transactionCount; i++) {
+            if (balances[i] > 0) {
+                System.out.println("Deposit: " + balances[i]);
+            } else {
+                System.out.println("Withdrawal: " + (-balances[i]));
+            }
+        }
+    }
+
+    public static void displayAccountInformation() {
+        if (storedName == null) {
+            System.out.println("Please sign up first.");
+            signUp();
+        }
+
+        System.out.println("\n\tAccount Information:\n");
+        System.out.println("\tAccount Name: " + storedName);
+        System.out.println("\tPIN: " + storedPin);
+        System.out.println("\tUsername: " + storedUsername);
+        System.out.println("\tPassword: " + storedPassword);
+        System.out.println(" ");
+    }
+
+    public static void main(String[] args) {
+        char choiceC;
+
+        do {
+            int choice;
+            System.out.println("1. Deposit");
+            System.out.println("2. Withdraw");
+            System.out.println("3. Transaction History");
+            System.out.println("4. Check Balance");
+            System.out.println("5. Account Details");
+            System.out.println("6. Exit Program");
+            System.out.print("Choose an option: ");
+            choice = scn.nextInt();
+            
+            scn.nextLine();
+
+            switch (choice) {
+                case 1:
+                    deposit();
+                    break;
+                case 2:
+                    withdraw();
+                    break;
+                case 3:
+                    transactionHistory();
+                    break;
+                case 4:
+                    checkBalance();
+                    break;
+                case 5:
+                    displayAccountInformation();
+                    break;
+                case 6:
+                    System.out.println("Exiting Program...");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid Choice... Tanga...");
+            }
+            System.out.print("Do you want to make another Transaction? [y/n]: ");
+            choiceC = scn.next().charAt(0);
+
+            if (choiceC == 'n' || choiceC == 'N') {
+                System.exit(0);
+            } else if (choiceC == 'y' || choiceC == 'Y') {
+                continue;
+            } else {
+                System.out.print("Invalid input, please enter 'y' or 'n': ");
+                choiceC = scn.next().charAt(0);
+            }
+
+        } while (true);
+    }
+}
+
+
 
