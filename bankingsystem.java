@@ -22,7 +22,6 @@ public class BankingSystem {
 
 	private static void LogIn() {  //added by Jamaine 
 		System.out.println("\nFederal Reserve Bank of COMP23P");
-			
 		System.out.print("Enter Your Username: ");
 		String username = scn.nextLine();
 		System.out.print("Enter Your Password: ");
@@ -73,9 +72,9 @@ public class BankingSystem {
 		{
 			char x;
 
-			Scanner select = new Scanner(System.in);
+			
 			System.out.print("Select Option: ");
-			x = select.next().charAt(0);
+			x = scn.next().charAt(0);
 			
 			do 
 			{
@@ -83,7 +82,7 @@ public class BankingSystem {
 				{
 					System.out.println("\nInvalid Input\n");
 					System.out.print("Select Option: ");
-					x = select.next().charAt(0);
+					x = scn.next().charAt(0);
 				}
 			} 
 			
