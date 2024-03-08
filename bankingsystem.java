@@ -21,8 +21,8 @@ public class BankingSystem {
 	}
 
 // added by Salazar
-public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+private static void homePage() {
+		
 		int option = 0;
 
 		while (option != 3);
@@ -31,7 +31,7 @@ public static void main(String[] args) {
 		System.out.println("2. Log In");
 		System.out.println("3. Exit");
 		System.out.print("Choose an option: ");
-		option = scanner.nextInt();
+		option = scn.nextInt();
 		
 		switch (option) {
 		case 1:
