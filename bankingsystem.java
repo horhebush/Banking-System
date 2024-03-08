@@ -20,6 +20,37 @@ public class BankingSystem {
 
 	}
 
+// added by Salazar
+public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int option = 0;
+
+		while (option != 3);
+		System.out.println("Welcome to the Banking System!"  );
+		System.out.println("1. Sign Up");
+		System.out.println("2. Log In");
+		System.out.println("3. Exit");
+		System.out.print("Choose an option: ");
+		option = scanner.nextInt();
+		
+		switch (option) {
+		case 1:
+			System.out.println("Sign Up selected. ");
+			break;
+		case 2:
+			System.out.println("Log In selected. ");
+			break;
+		case 3:
+			System.out.println("Leaving the Banking System. Goodbye! ");
+			break;
+		default:
+			System.out.println("Invalid option. Please try again. ");
+			break;
+		
+		}
+	}
+
+
 		private static void LogIn() {  //added by Tuazon
 		System.out.println("\nFederal Reserve Bank of COMP23P");
 		System.out.print("Enter Your Username: ");
