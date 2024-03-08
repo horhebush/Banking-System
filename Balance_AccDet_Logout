@@ -1,6 +1,5 @@
 //with main class, menu, money transaction, checking of balance, account details, and log out and balik to main class
 
-
 package Final_Project;
 import java.util.Scanner;
 public class BankAccount {
