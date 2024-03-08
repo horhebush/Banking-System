@@ -2,13 +2,15 @@
 
 package Final_Project;
 import java.util.Scanner;
+import java.util.ArrayList;
 public class BankAccount {
 
 	private String storedName;
     private int storedPin;
     private String storedUsername;
     private String storedPassword;
-
+    private ArrayList<Double> transactionHistory = new ArrayList<>();
+    
     public BankAccount() {
         signUp();
     }
@@ -72,7 +74,8 @@ public class BankAccount {
             System.out.println("\t[A] Money Transaction");
             System.out.println("\t[B] Balance");
             System.out.println("\t[C] Account Details");
-            System.out.println("\t[D] Log Out");
+            System.out.println("\t[D] Transacation History");
+            System.out.println("\t[E] Log Out");
             System.out.print("\tEnter your choice: ");
 
             char choice = scanner.next().charAt(0);
@@ -89,12 +92,14 @@ public class BankAccount {
                       System.out.print("\tEnter the amount to deposit: ");
                       double depositAmount = scanner.nextDouble();
                       balance += depositAmount;
+                      transactionHistory.add(depositAmount);
                       System.out.println("\tDeposit successful.");
                       } else if (transactionChoice == 'B') {
                       System.out.print("\tEnter the amount to withdraw: ");
                       double withdrawAmount = scanner.nextDouble();
                       if (withdrawAmount <= balance) {
                       balance -= withdrawAmount;
+                      transactionHistory.add(-withdrawAmount);
                          System.out.println("\tWithdrawal successful.");
                          } else {
                          System.out.println("\tInsufficient funds.");
@@ -110,21 +115,25 @@ public class BankAccount {
 
                 case 'C':
                      System.out.println("\tAccount Details:");
-                     displayAccountInformation();
+                     displayAccountDetails();
                      break;
 
                 case 'D':
-                     System.out.println("\tYou have successfully logged out!");
-                     return; 
+                	displayTransactionHistory();
+                	break;
+                    
+                case 'E':
+                	System.out.println("\tYou have successfully logged out!");
+                    return;
 
                 default:
-                     System.out.println("\tInvalid choice. Please enter A, B, C, or D: ");
+                     System.out.println("\tInvalid choice. Please enter A, B, C, D, or E: ");
                 }
             }
         }
     
-    public void displayAccountInformation() {
-        System.out.println("\n\tAccount Information:\n");
+    public void displayAccountDetails() {
+        System.out.println("\n\tAccount Details:\n");
         System.out.println("\tAccount Name: " + storedName);
         System.out.println("\tPIN: " + storedPin);
         System.out.println("\tUsername: " + storedUsername);
@@ -134,16 +143,32 @@ public class BankAccount {
     
     }
     
+    public void displayTransactionHistory() {
+    	System.out.println("\n\tTransaction History:\n");
+        for (double amount : transactionHistory) {
+            if (amount > 0) {
+                System.out.println("\tDeposit: " + amount);
+            } else if (amount < 0){
+                System.out.println("\tWithdrawal: " + (-amount));
+            } else {
+            	System.out.println("\tError");
+            }
+            
+        }
+        System.out.println("\n");
+    }
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int option = 0;
         BankAccount userAccount = null;
 
-        while (option != 3) {
+        while (option != 4) {
             System.out.println("\n\tWelcome to Federal Reserve bank of COM23P!");
             System.out.println("\n1. Sign Up");
             System.out.println("2. Log In");
-            System.out.println("3. Exit");
+            System.out.println("3. Transaction History");
+            System.out.println("4. Exit");
             System.out.print("Choose an option: ");
             option = scanner.nextInt();
 
@@ -151,7 +176,7 @@ public class BankAccount {
                 case 1:
                     System.out.println("Sign Up selected. ");
                     userAccount = new BankAccount();
-                    userAccount.displayAccountInformation();
+                    userAccount.displayAccountDetails();
                     break;
                 case 2:
                     System.out.println("Log In selected. ");
@@ -164,8 +189,16 @@ public class BankAccount {
                     }
                     break;
                 case 3:
+                	if (userAccount != null) {
+                        userAccount.displayTransactionHistory();
+                    } else {
+                        System.out.println("No account created yet. Please sign up first.");
+                    }        
+                	break;
+                case 4:
                     System.out.println("Leaving the Banking System. Goodbye! ");
                     break;
+                	
                 default:
                     System.out.println("Invalid option. Please try again. ");
                     break;
@@ -173,4 +206,3 @@ public class BankAccount {
         }
     }
 }
-
