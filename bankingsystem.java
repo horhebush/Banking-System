@@ -71,7 +71,7 @@ public static void main(String[] args) {
 		scn.close();
 			
 		}
-	private static void Menu() { //Added by Jas
+	private static void Menu() { //Added by Nofre
         {
        	System.out.println("\n\tHello, " + storedName);
        	System.out.println(" ");
