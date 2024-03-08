@@ -274,7 +274,7 @@ public class BankingSystem {
 		System.out.println("\tPassword: " + storedPass);
 		System.out.println(" ");
 	}
-	//waiting sa ibang case ni lim for deposit and withdraw
+	
 	case 3:
 		checkBalance();
 		break;
