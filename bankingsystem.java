@@ -219,33 +219,28 @@ public class BankingSystem {
 
 	
 	// New Additions - LIM    
-	public static void displayAccountTransaction() { // Method to display transaction history
-	        String accName;
-	        int accPin;
-	        	
-	        System.out.print("Enter Account Name: ");
-	        accName = scn.nextLine();
-	        	
-	        System.out.print("Enter Pin: ");
-	        accPin = scn.nextInt();
-	        	
-	        scn.nextLine();
-	        if (accName.equals(storedName) && accPin == storedPin) {
-	        	System.out.println("Transaction History");
-	        		
-	        	// Loop to iterate
-	        	for (int i = 0 ; i < transactionCount ; i ++) {
-	        		if (balances[i] > 0) {
-	        			System.out.println("Deposited: " + balances[i]);
-	        		} else {
-	        			System.out.println("Whitdrawed: " + (-balances[i]));
-	        		}
-	        	}
-	        } else {
-	        	System.out.print("Invalid Credentials!");
-	        	return;
-	        }
-	}
+public static void displayAccountTransaction() {
+    String accName;
+
+    System.out.print("Enter Account Name: ");
+    accName = scn.nextLine();
+
+    if (PinValidation(scn)) { // Call PIN validation method
+        System.out.println("Transaction History");
+
+        // Loop to iterate
+        for (int i = 0; i < transactionCount; i++) {
+            if (balances[i] > 0) {
+                System.out.println("Deposited: " + balances[i]);
+            } else {
+                System.out.println("Withdrawn: " + (-balances[i]));
+            }
+        }
+    } else {
+        System.out.println("Invalid Credentials!");
+    }
+}
+
 	//added by jez
 	public static void checkBalance() {
 	System.out.println("Current balance: " + storedBalance);
